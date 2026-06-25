@@ -1,0 +1,103 @@
+/* ============================================================
+   styles.css — visual styling for the page
+   Read top to bottom; each block has a comment explaining it.
+   ============================================================ */
+
+/* The :root block holds reusable "variables" (custom properties).
+   Defining colors once here means you can change them in ONE place
+   and the whole page updates. Use them later with var(--name). */
+:root {
+  --cardinal: #8c1d40;        /* main burgundy/cardinal accent color */
+  --cardinal-dark: #6e1632;   /* a slightly darker shade for contrast */
+  --text: #2b2b2b;            /* near-black for comfortable reading */
+  --bg: #fdf7f8;              /* very subtle warm tint of the cardinal */
+  --card: #ffffff;            /* clean white for the content panel */
+}
+
+/* The universal selector (*) targets EVERY element.
+   box-sizing: border-box makes width/height include padding and
+   borders, so spacing math stays predictable. Resetting margin
+   and padding removes the browser's inconsistent defaults. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles for the whole page body. */
+body {
+  /* A modern system font stack: uses the device's native UI font,
+     falling back gracefully if one isn't available. */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  color: var(--text);                 /* default text color */
+  line-height: 1.6;                   /* roomy spacing between lines */
+
+  /* A soft top-to-bottom gradient using the subtle background tint. */
+  background: linear-gradient(160deg, var(--bg), #f7eef0);
+
+  /* Flexbox is used here to CENTER the content both ways. */
+  display: flex;
+  align-items: center;        /* vertical centering */
+  justify-content: center;    /* horizontal centering */
+  min-height: 100vh;          /* body fills at least the full screen height */
+  padding: 1.5rem;            /* breathing room on small screens */
+}
+
+/* A centered white "card" that holds the heading and tagline.
+   We target the <body>'s direct content; here we style a wrapper
+   by tag, but you can also wrap content in a <main> element. */
+main {
+  background: var(--card);
+  max-width: 640px;           /* keeps text from stretching too wide */
+  width: 100%;                /* shrinks to fit narrow screens */
+  padding: 3rem 2.5rem;       /* generous inner spacing */
+  border-radius: 16px;        /* gently rounded corners */
+  text-align: center;         /* center the text inside the card */
+
+  /* A soft shadow lifts the card off the background subtly. */
+  box-shadow: 0 10px 30px rgba(140, 29, 64, 0.12);
+
+  /* A thin top accent bar in the cardinal color. */
+  border-top: 4px solid var(--cardinal);
+}
+
+/* The main heading (your name). */
+h1 {
+  /* Use the Google Font loaded in index.html. The browser falls back
+     to a plain serif if the font hasn't loaded yet. */
+  font-family: "Playfair Display", Georgia, serif;
+
+  color: var(--cardinal-dark);
+  font-size: 2.75rem;         /* large and prominent */
+  letter-spacing: -0.5px;     /* tightens wide headings slightly */
+  margin-bottom: 0.75rem;     /* space between name and tagline */
+}
+
+/* The tagline paragraph. */
+p {
+  /* Same Google Font as the heading, with a serif fallback. */
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 1.15rem;
+  color: #555;                /* softer gray so the name stands out */
+}
+
+/* ------------------------------------------------------------
+   Responsive design: this @media block applies ONLY when the
+   screen is 480px wide or less (typical phones). We shrink
+   spacing and font sizes so everything fits comfortably.
+   ------------------------------------------------------------ */
+@media (max-width: 480px) {
+  main {
+    padding: 2rem 1.5rem;     /* less inner spacing on small screens */
+  }
+
+  h1 {
+    font-size: 2rem;          /* smaller heading on phones */
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}

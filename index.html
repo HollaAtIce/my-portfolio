@@ -14,15 +14,35 @@
 
   <!-- The text shown in the browser tab. -->
   <title>Isaac</title>
+
+  <!-- Google Fonts: load the "Playfair Display" font for the heading.
+       The two preconnect lines below are a speed optimization — they
+       open an early connection to Google's font servers so the font
+       downloads faster. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Links the external stylesheet. The browser loads styles.css
+       and applies its rules to this page. -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <!-- The <body> holds everything you actually SEE on the page. -->
 <body>
-  <!-- <h1> is the main heading — the biggest, most important title. -->
-  <h1>Isaac</h1>
+  <!-- <main> wraps the primary content. The CSS turns this into the
+       centered white "card". -->
+  <main>
+    <!-- <h1> is the main heading — the biggest, most important title. -->
+    <h1>Isaac</h1>
 
-  <!-- <p> is a paragraph. Replace the placeholder text with your own tagline. -->
-  <p>A short tagline goes here.</p>
+    <!-- <p> is a paragraph. Replace the placeholder text with your own tagline.
+         <em> makes the word it wraps italic (and marks it as emphasized). -->
+    <p>A short tagline <em>should</em> go here.</p>
+  </main>
 </body>
 
 </html>
