@@ -109,13 +109,15 @@ h1 {
   margin-right: 0.75rem;
 }
 
-/* The hero photo: an LA sunset. Constrained width, rounded corners,
-   and a soft shadow so it sits as a framed image below the tagline. */
+/* The hero photo: an LA sunset. Capped to a compact banner — the
+   image is cropped (object-fit: cover) so it never dominates the page,
+   with rounded corners and a soft shadow. */
 .hero-photo {
   display: block;
   width: 100%;
-  max-width: 480px;
-  height: auto;                     /* keep the original proportions */
+  max-width: 420px;                 /* never wider than the text column */
+  height: 260px;                    /* fixed, compact banner height */
+  object-fit: cover;                /* crop to fill the box, no stretching */
   margin: 2.5rem auto 0;            /* space above, centered horizontally */
   border-radius: 12px;
   box-shadow: 0 12px 30px rgba(140, 29, 64, 0.18);
@@ -159,5 +161,10 @@ footer a:hover {
 
   .tagline {
     font-size: 1rem;
+  }
+
+  .hero-photo {
+    height: 200px;                  /* a little shorter on phones */
+    margin-top: 1.75rem;
   }
 }
