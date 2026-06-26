@@ -109,6 +109,18 @@ h1 {
   margin-right: 0.75rem;
 }
 
+/* The hero photo: an LA sunset. Constrained width, rounded corners,
+   and a soft shadow so it sits as a framed image below the tagline. */
+.hero-photo {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;                     /* keep the original proportions */
+  margin: 2.5rem auto 0;            /* space above, centered horizontally */
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(140, 29, 64, 0.18);
+}
+
 /* A quiet, centered footer linking back to the live site. */
 footer {
   text-align: center;
