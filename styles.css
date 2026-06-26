@@ -7,11 +7,12 @@
    Defining colors once here means you can change them in ONE place
    and the whole page updates. Use them later with var(--name). */
 :root {
-  --cardinal: #8c1d40;        /* main burgundy/cardinal accent color */
+  --cardinal: #8c1d40;        /* main burgundy/cardinal accent color (USC) */
   --cardinal-dark: #6e1632;   /* a slightly darker shade for contrast */
   --text: #2b2b2b;            /* near-black for comfortable reading */
+  --muted: #6b6b6b;           /* softer gray for secondary text */
   --bg: #fdf7f8;              /* very subtle warm tint of the cardinal */
-  --card: #ffffff;            /* clean white for the content panel */
+  --card: #ffffff;            /* clean white for content panels */
 }
 
 /* The universal selector (*) targets EVERY element.
@@ -22,6 +23,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Smooth-scroll when clicking the in-page nav links (e.g. "About Me"). */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Styles for the whole page body. */
@@ -35,31 +41,42 @@ body {
 
   /* A soft top-to-bottom gradient using the subtle background tint. */
   background: linear-gradient(160deg, var(--bg), #f7eef0);
-
-  /* Flexbox is used here to CENTER the content both ways. */
-  display: flex;
-  align-items: center;        /* vertical centering */
-  justify-content: center;    /* horizontal centering */
-  min-height: 100vh;          /* body fills at least the full screen height */
-  padding: 1.5rem;            /* breathing room on small screens */
+  min-height: 100vh;                  /* fill at least the full screen height */
 }
 
-/* A centered white "card" that holds the heading and tagline.
-   We target the <body>'s direct content; here we style a wrapper
-   by tag, but you can also wrap content in a <main> element. */
+/* ------------------------------------------------------------
+   Top navigation bar: the 👁️ brand mark on the left, page
+   links on the right. Kept light and minimal to match the
+   spacious feel of the live site.
+   ------------------------------------------------------------ */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;   /* push brand and links apart */
+  max-width: 760px;
+  margin: 0 auto;                   /* center the bar */
+  padding: 1.5rem 2rem;
+}
+
+.brand {
+  font-size: 1.5rem;
+  text-decoration: none;            /* the emoji is a link, but no underline */
+}
+
+/* <main> holds the hero, centered with breathing room. */
 main {
-  background: var(--card);
-  max-width: 640px;           /* keeps text from stretching too wide */
-  width: 100%;                /* shrinks to fit narrow screens */
-  padding: 3rem 2.5rem;       /* generous inner spacing */
-  border-radius: 16px;        /* gently rounded corners */
-  text-align: center;         /* center the text inside the card */
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
-  /* A soft shadow lifts the card off the background subtly. */
-  box-shadow: 0 10px 30px rgba(140, 29, 64, 0.12);
-
-  /* A thin top accent bar in the cardinal color. */
-  border-top: 4px solid var(--cardinal);
+/* ------------------------------------------------------------
+   Hero: name + three-part descriptor. Lots of vertical space
+   so it feels open and confident.
+   ------------------------------------------------------------ */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem 3.5rem;
 }
 
 /* The main heading (your name). */
@@ -67,20 +84,47 @@ h1 {
   /* Use the Google Font loaded in index.html. The browser falls back
      to a plain serif if the font hasn't loaded yet. */
   font-family: "Playfair Display", Georgia, serif;
-
   color: var(--cardinal-dark);
-  font-size: 2.75rem;         /* large and prominent */
-  letter-spacing: -0.5px;     /* tightens wide headings slightly */
-  margin-bottom: 0.75rem;     /* space between name and tagline */
+  font-size: 3.25rem;
+  letter-spacing: -0.5px;           /* tightens wide headings slightly */
+  margin-bottom: 1rem;
 }
 
-/* The tagline paragraph. */
-p {
-  /* Same Google Font as the heading, with a serif fallback. */
-  font-family: "Playfair Display", Georgia, serif;
+/* The tagline is a row of three words separated by dots.
+   Flexbox lays the words out in a centered, wrapping row. */
+.tagline {
+  display: flex;
+  flex-wrap: wrap;                  /* stack on very narrow screens */
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
 
-  font-size: 1.15rem;
-  color: #555;                /* softer gray so the name stands out */
+/* Put a small cardinal dot BEFORE every word except the first,
+   acting as a separator: Angeleno · USC alum · Product Management */
+.tagline span + span::before {
+  content: "·";
+  color: var(--cardinal);
+  margin-right: 0.75rem;
+}
+
+/* A quiet, centered footer linking back to the live site. */
+footer {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--cardinal-dark);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+footer a:hover {
+  border-color: var(--cardinal);
 }
 
 /* ------------------------------------------------------------
@@ -89,15 +133,19 @@ p {
    spacing and font sizes so everything fits comfortably.
    ------------------------------------------------------------ */
 @media (max-width: 480px) {
-  main {
-    padding: 2rem 1.5rem;     /* less inner spacing on small screens */
+  nav {
+    padding: 1.25rem 1.25rem;
+  }
+
+  .hero {
+    padding: 2.5rem 0.5rem 2rem;
   }
 
   h1 {
-    font-size: 2rem;          /* smaller heading on phones */
+    font-size: 2.25rem;
   }
 
-  p {
+  .tagline {
     font-size: 1rem;
   }
 }

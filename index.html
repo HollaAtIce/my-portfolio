@@ -13,9 +13,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- The text shown in the browser tab. -->
-  <title>Isaac</title>
+  <title>Isaac Cuchilla</title>
 
-  <!-- Google Fonts: load the "Playfair Display" font for the heading.
+  <!-- A one-line summary search engines and link previews can show. -->
+  <meta name="description" content="IC — Native Angeleno" />
+
+  <!-- Google Fonts: load "Playfair Display" for headings.
        The two preconnect lines below are a speed optimization — they
        open an early connection to Google's font servers so the font
        downloads faster. -->
@@ -33,16 +36,32 @@
 
 <!-- The <body> holds everything you actually SEE on the page. -->
 <body>
-  <!-- <main> wraps the primary content. The CSS turns this into the
-       centered white "card". -->
-  <main>
-    <!-- <h1> is the main heading — the biggest, most important title. -->
-    <h1>Isaac</h1>
+  <!-- A slim top navigation bar. The 👁️ eye is a small brand mark,
+       echoing the motif from isaaccuchilla.com. -->
+  <nav>
+    <a class="brand" href="#top" aria-label="Home">👁️</a>
+  </nav>
 
-    <!-- <p> is a paragraph. Replace the placeholder text with your own tagline.
-         <em> makes the word it wraps italic (and marks it as emphasized). -->
-    <p>No better time than now.</p>
+  <!-- <main> wraps the primary content of the page. -->
+  <main id="top">
+    <!-- The hero: name plus the three-part descriptor from the live site. -->
+    <header class="hero">
+      <!-- <h1> is the main heading — the biggest, most important title. -->
+      <h1>Isaac Cuchilla</h1>
+
+      <!-- The tagline. The dot separators are styled in CSS. -->
+      <p class="tagline">
+        <span>Angeleno</span>
+        <span>USC alum</span>
+        <span>Product Management</span>
+      </p>
+    </header>
   </main>
+
+  <!-- A simple footer for contact / the live site. -->
+  <footer>
+    <a href="https://isaaccuchilla.com">isaaccuchilla.com</a>
+  </footer>
 </body>
 
 </html>
